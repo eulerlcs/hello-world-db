@@ -1,2 +1,2 @@
 # hello-world-db
-hello mysql8
+hello db
