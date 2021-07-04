@@ -1,3 +1,6 @@
-INSERT INTO `hello`.`user` (`name`, `department`, `created_at`) VALUES ('ws-001', 'department 1', '2020-08-30 02:09:53');
-INSERT INTO `hello`.`user` (`name`, `department`, `created_at`) VALUES ('ws-002', 'department 2', '2020-08-30 02:09:53');
-INSERT INTO `hello`.`user` (`name`, `department`, `created_at`) VALUES ('ws-003', 'department 2', '2020-08-30 02:09:53');
+SET CHARACTER_SET_CLIENT = utf8mb4;
+SET CHARACTER_SET_CONNECTION = utf8mb4;
+
+INSERT INTO `hello`.`account` (`name`, `department`) VALUES ('ws-001', '総務部');
+INSERT INTO `hello`.`account` (`name`, `department`) VALUES ('ws-002', '開発部');
+INSERT INTO `hello`.`account` (`name`, `department`, `created_at`) VALUES ('ws-003', '経理部', '2021-07-04 23:09:53');

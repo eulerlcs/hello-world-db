@@ -1,0 +1,37 @@
+###### 勉強
+version: '3'
+
+services:
+  hello-postgres-db-dev:
+    image: postgres:13.3
+#    restart: always
+    container_name: hello-postgres-db-dev
+    environment:
+      POSTGRES_USER: user01
+      POSTGRES_PASSWORD: 123456
+      PGPASSWORD: 12345678
+      POSTGRES_DB: hello
+      TZ: "Asia/Tokyo"
+    ports:
+      - 54321:5432
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+      - ./data:/var/lib/postgresql/data
+
+  hello-postgres-gui-dev:
+    image: dpage/pgadmin4:5.4
+#    restart: always
+    container_name: hello-postgres-gui-dev
+    ports:
+      - 54311:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: eulerlcs@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: 123456
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    depends_on:
+      - hello-postgres-db-dev
+
+networks:
+  default:
+    name: hello-network-dev

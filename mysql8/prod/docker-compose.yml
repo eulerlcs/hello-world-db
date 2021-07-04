@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  db:
+  hello-mysql-db-prod:
     image: mysql:8
-#    container_name: mysql8-01
+    container_name: hello-mysql-db-prod
 #    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: 12345678
@@ -18,3 +18,18 @@ services:
     - ./data:/var/lib/mysql
     ports:
     - 33062:3306
+
+  hello-mysql-gui-prod:
+    container_name: hello-mysql-gui-prod
+    image: phpmyadmin/phpmyadmin
+    environment:
+    - PMA_ARBITRARY=1
+    - PMA_HOSTS=hello-mysql-db-prod
+    - PMA_USER=root
+    - PMA_PASSWORD=12345678
+    ports:
+    - 33052:80
+
+networks:
+  default:
+    name: hello-network-prod
